@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La mano perdente — 負け札 | HACHI-KYUU-SAN</title>
+  <title>Songbook — HACHI-KYUU-SAN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
@@ -15,12 +15,17 @@
       color: #111;
       font-family: 'Barlow', sans-serif;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .sb {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .sb-header {
@@ -47,78 +52,114 @@
       line-height: 1;
     }
 
+    .sb-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: #999;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.6rem;
+    }
+
     .sb-rule {
       border: none;
       border-top: 2px solid #b71c1c;
       margin: 1.2rem 0 0;
     }
 
-    .sb-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      padding: 1.5rem 0 0;
-    }
-
-    .sb-col {
-      padding: 0 2rem 2.5rem;
-      border-right: 1px solid #ddd;
-    }
-
-    .sb-col:last-child {
-      border-right: none;
-    }
-
-    .sb-col-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      color: #b71c1c;
-      text-transform: uppercase;
-      display: block;
-      text-align: center;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid #eee;
-      margin-bottom: 1.2rem;
-    }
-
-    .sb-section {
-      margin-bottom: 1.2rem;
+    .sb-body {
+      padding: 2.5rem 3rem;
+      flex: 1;
     }
 
     .sb-section-label {
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.72rem;
-      font-style: italic;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
       color: #b71c1c;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .sb-line {
-      display: block;
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: #111;
-    }
-
-    .sb-line.jp {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 0.87rem;
-      line-height: 2.1;
-    }
-
-    .sb-line.tr {
-      font-size: 0.87rem;
-      color: #333;
-    }
-
-    .sb-instrumental {
-      font-size: 0.72rem;
-      font-style: italic;
-      color: #bbb;
+      text-transform: uppercase;
       display: block;
       margin-bottom: 1rem;
+    }
+
+    .sb-tracklist {
+      list-style: none;
+      margin-bottom: 3rem;
+    }
+
+    .sb-tracklist li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .sb-tracklist li:first-child {
+      border-top: 1px solid #eee;
+    }
+
+    .sb-track {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      text-decoration: none;
+      color: #111;
+      gap: 1rem;
+    }
+
+    .sb-track:hover .sb-track-title {
+      color: #b71c1c;
+    }
+
+    .sb-track-left {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+    }
+
+    .sb-track-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #ccc;
+      min-width: 1.2rem;
+    }
+
+    .sb-track-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    .sb-track-jp {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.85rem;
+      color: #b71c1c;
+      margin-left: 0.5rem;
+    }
+
+    .sb-track-links {
+      display: flex;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .sb-track-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      padding: 0.3rem 0.7rem;
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .sb-track-links a:hover {
+      color: #b71c1c;
+      border-color: #b71c1c;
     }
 
     .sb-footer {
@@ -127,7 +168,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 0.5rem;
     }
 
     .sb-footer .left {
@@ -148,265 +188,40 @@
     }
 
     @media (max-width: 700px) {
-      .sb-cols {
-        grid-template-columns: 1fr;
-      }
-      .sb-col {
-        border-right: none;
-        border-bottom: 1px solid #eee;
-        padding: 1.5rem 1.5rem;
-      }
-      .sb-col:last-child {
-        border-bottom: none;
-      }
-      .sb-header {
-        padding: 2rem 1.5rem 0;
-      }
-      .sb-footer {
-        padding: 0.9rem 1.5rem;
-        flex-direction: column;
-        gap: 0.4rem;
-        align-items: flex-start;
-      }
+      .sb-header { padding: 2rem 1.5rem 0; }
+      .sb-body { padding: 2rem 1.5rem; }
+      .sb-footer { padding: 0.9rem 1.5rem; flex-direction: column; gap: 0.4rem; align-items: flex-start; }
+      .sb-track-jp { display: none; }
     }
   </style>
 </head>
 <body>
 
 <div class="sb">
-
   <div class="sb-header">
-    <span class="sb-title-main">LA MANO PERDENTE</span>
-    <span class="sb-title-jp">負け札</span>
+    <span class="sb-title-main">SONGBOOK</span>
+    <span class="sb-title-jp">八九三</span>
+    <span class="sb-subtitle">Le musiche del mondo di HACHI-KYUU-SAN</span>
     <hr class="sb-rule">
   </div>
 
-  <div class="sb-cols">
+  <div class="sb-body">
 
-    <!-- COLONNA 1: GIAPPONESE -->
-    <div class="sb-col">
-      <span class="sb-col-label">日本語</span>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Intro strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 1]</span>
-        <span class="sb-line jp">夜の牌を引く手が</span>
-        <span class="sb-line jp">震えている、また負けた</span>
-        <span class="sb-line jp">誰も見ていない部屋で</span>
-        <span class="sb-line jp">一人で零を数える</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line jp">勝てない夜がまた来た</span>
-        <span class="sb-line jp">それでも席を立てない</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line jp">八九三、零になる</span>
-        <span class="sb-line jp">傷跡だけが残ってる</span>
-        <span class="sb-line jp">八九三、零になる</span>
-        <span class="sb-line jp">あなたの名前も消えていく</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 2]</span>
-        <span class="sb-line jp">あなたの名前を呼んでも</span>
-        <span class="sb-line jp">答えは返ってこない</span>
-        <span class="sb-line jp">煙草の煙の向こうに</span>
-        <span class="sb-line jp">あの夜の顔が浮かぶ</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line jp">負けた手を握りしめて</span>
-        <span class="sb-line jp">次の朝を待っている</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line jp">八九三、零になる</span>
-        <span class="sb-line jp">傷跡だけが残ってる</span>
-        <span class="sb-line jp">八九三、零になる</span>
-        <span class="sb-line jp">あなたの名前も消えていく</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Bridge strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final verse]</span>
-        <span class="sb-line jp">それでも朝が来る</span>
-        <span class="sb-line jp">それでも街は動いてる</span>
-        <span class="sb-line jp">私だけが止まったまま</span>
-        <span class="sb-line jp">零の手を持ったまま</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final chorus]</span>
-        <span class="sb-line jp">八九三、零になる</span>
-        <span class="sb-line jp">傷跡だけが残ってる</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Outro]</span>
-      </div>
-    </div>
-
-    <!-- COLONNA 2: ROMAJI -->
-    <div class="sb-col">
-      <span class="sb-col-label">Romaji</span>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Intro strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 1]</span>
-        <span class="sb-line tr">Yoru no hai wo hiku te ga</span>
-        <span class="sb-line tr">Furuete iru, mata maketa</span>
-        <span class="sb-line tr">Dare mo mite inai heya de</span>
-        <span class="sb-line tr">Hitori de zero wo kazoeru</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line tr">Katenai yoru ga mata kita</span>
-        <span class="sb-line tr">Soredemo seki wo tatenai</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line tr">Hachi kyuu san, zero ni naru</span>
-        <span class="sb-line tr">Kizuato dake ga nokotteru</span>
-        <span class="sb-line tr">Hachi kyuu san, zero ni naru</span>
-        <span class="sb-line tr">Anata no namae mo kiete iku</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 2]</span>
-        <span class="sb-line tr">Anata no namae wo yonde mo</span>
-        <span class="sb-line tr">Kotae wa kaette konai</span>
-        <span class="sb-line tr">Tabako no kemuri no mukoo ni</span>
-        <span class="sb-line tr">Ano yoru no kao ga ukabu</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line tr">Maketa te wo nigiri shimete</span>
-        <span class="sb-line tr">Tsugi no asa wo matte iru</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line tr">Hachi kyuu san, zero ni naru</span>
-        <span class="sb-line tr">Kizuato dake ga nokotteru</span>
-        <span class="sb-line tr">Hachi kyuu san, zero ni naru</span>
-        <span class="sb-line tr">Anata no namae mo kiete iku</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Bridge strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final verse]</span>
-        <span class="sb-line tr">Soredemo asa ga kuru</span>
-        <span class="sb-line tr">Soredemo machi wa ugoiteru</span>
-        <span class="sb-line tr">Watashi dake ga tomatta mama</span>
-        <span class="sb-line tr">Zero no te wo motta mama</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final chorus]</span>
-        <span class="sb-line tr">Hachi kyuu san, zero ni naru</span>
-        <span class="sb-line tr">Kizuato dake ga nokotteru</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Outro]</span>
-      </div>
-    </div>
-
-    <!-- COLONNA 3: ITALIANO -->
-    <div class="sb-col">
-      <span class="sb-col-label">Italiano</span>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Intro strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 1]</span>
-        <span class="sb-line">La mano che pesca le carte della notte</span>
-        <span class="sb-line">trema, ho perso ancora</span>
-        <span class="sb-line">in una stanza dove nessuno guarda</span>
-        <span class="sb-line">conto gli zero da sola</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line">è arrivata un'altra notte che non posso vincere</span>
-        <span class="sb-line">eppure non riesco ad alzarmi dal tavolo</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line">otto nove tre, diventa zero</span>
-        <span class="sb-line">solo le cicatrici rimangono</span>
-        <span class="sb-line">otto nove tre, diventa zero</span>
-        <span class="sb-line">anche il tuo nome sta svanendo</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Verse 2]</span>
-        <span class="sb-line">anche se chiamo il tuo nome</span>
-        <span class="sb-line">nessuna risposta torna</span>
-        <span class="sb-line">oltre il fumo della sigaretta</span>
-        <span class="sb-line">il tuo volto di quella notte affiora</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Pre-chorus]</span>
-        <span class="sb-line">stringendo forte la mano perdente</span>
-        <span class="sb-line">aspetto il prossimo mattino</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Chorus]</span>
-        <span class="sb-line">otto nove tre, diventa zero</span>
-        <span class="sb-line">solo le cicatrici rimangono</span>
-        <span class="sb-line">otto nove tre, diventa zero</span>
-        <span class="sb-line">anche il tuo nome sta svanendo</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Bridge strumentale]</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final verse]</span>
-        <span class="sb-line">eppure il mattino arriva</span>
-        <span class="sb-line">eppure la città continua a muoversi</span>
-        <span class="sb-line">solo io sono rimasta ferma</span>
-        <span class="sb-line">con la mano zero ancora in mano</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-section-label">[Final chorus]</span>
-        <span class="sb-line">otto nove tre, diventa zero</span>
-        <span class="sb-line">solo le cicatrici rimangono</span>
-      </div>
-
-      <div class="sb-section">
-        <span class="sb-instrumental">[Outro]</span>
-      </div>
-    </div>
+    <span class="sb-section-label">また同じ夜に — Keiko Kurosawa</span>
+    <ul class="sb-tracklist">
+      <li>
+        <div class="sb-track">
+          <div class="sb-track-left">
+            <span class="sb-track-num">01</span>
+            <span class="sb-track-title">La mano perdente <span class="sb-track-jp">負け札</span></span>
+          </div>
+          <div class="sb-track-links">
+            <a href="mano-perdente-lore.html">Lore</a>
+            <a href="mano-perdente-testi.html">Testi</a>
+          </div>
+        </div>
+      </li>
+    </ul>
 
   </div>
 
@@ -414,7 +229,6 @@
     <span class="left">HACHI-KYUU-SAN — colonna sonora</span>
     <span class="right">Colonna sonora originale di HACHI-KYUU-SAN — 八九三 La mano perdente</span>
   </div>
-
 </div>
 
 </body>
